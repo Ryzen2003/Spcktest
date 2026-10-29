@@ -1,0 +1,3306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Clark's Magic Game Kingdom</title>
+
+<style>
+
+/* =====================================================
+   MAGIC GAME KINGDOM
+===================================================== */
+
+@import url(
+'https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Marcellus&family=Rajdhani:wght@400;500;600;700&display=swap'
+);
+
+
+:root {
+
+    --black: #020303;
+    --dark: #07100c;
+    --green: #16d47b;
+    --green2: #0a7048;
+    --gold: #d6b45a;
+    --gold2: #f5df9a;
+    --white: #f5f5f2;
+    --gray: #aeb8b3;
+
+}
+
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        'Rajdhani',
+        sans-serif;
+
+    color: var(--white);
+
+    background:
+
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(11,100,65,.25),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(22,212,123,.08),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #010202,
+            #07100c,
+            #020403
+        );
+
+    overflow-x: hidden;
+
+}
+
+
+/* =====================================================
+   BACKGROUND MAGIC
+===================================================== */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+
+        radial-gradient(
+            circle,
+            rgba(22,212,123,.35) 1px,
+            transparent 1px
+        ),
+
+        radial-gradient(
+            circle,
+            rgba(214,180,90,.25) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        100px 100px,
+        170px 170px;
+
+    animation:
+        starsMove 25s linear infinite;
+
+    opacity: .25;
+
+    z-index: -2;
+
+}
+
+
+@keyframes starsMove {
+
+    from {
+
+        background-position:
+            0 0,
+            50px 70px;
+
+    }
+
+    to {
+
+        background-position:
+            150px 300px,
+            -100px 200px;
+
+    }
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+nav {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding:
+        14px 6%;
+
+    background:
+        rgba(2,5,4,.9);
+
+    backdrop-filter:
+        blur(15px);
+
+    border-bottom:
+        1px solid
+        rgba(214,180,90,.25);
+
+}
+
+
+.logo {
+
+    font-family:
+        'Cinzel',
+        serif;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    color: var(--gold);
+
+    text-shadow:
+        0 0 12px
+        rgba(214,180,90,.5);
+
+}
+
+
+.back {
+
+    color: var(--white);
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    padding:
+        8px 16px;
+
+    border:
+        1px solid
+        rgba(214,180,90,.4);
+
+    transition: .3s;
+
+}
+
+
+.back:hover {
+
+    color: #000;
+
+    background:
+        var(--gold);
+
+    box-shadow:
+        0 0 20px
+        rgba(22,212,123,.4);
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+
+    text-align: center;
+
+    padding:
+        80px 20px 50px;
+
+    position: relative;
+
+}
+
+
+.magic-ring {
+
+    position: absolute;
+
+    width: 380px;
+    height: 380px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(214,180,90,.15);
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    animation:
+        rotateRing 20s linear infinite;
+
+    pointer-events: none;
+
+}
+
+
+.magic-ring::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 35px;
+
+    border:
+        1px solid
+        rgba(22,212,123,.2);
+
+    border-radius: 50%;
+
+}
+
+
+@keyframes rotateRing {
+
+    from {
+        transform:
+            translate(-50%,-50%)
+            rotate(0);
+    }
+
+    to {
+        transform:
+            translate(-50%,-50%)
+            rotate(360deg);
+    }
+
+}
+
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.hero h1 {
+
+    font-family:
+        'Cinzel',
+        serif;
+
+    font-size:
+        clamp(36px,8vw,70px);
+
+    color:
+        var(--gold2);
+
+    letter-spacing:
+        3px;
+
+    text-shadow:
+
+        0 0 10px
+        rgba(214,180,90,.6),
+
+        0 0 30px
+        rgba(22,212,123,.25);
+
+}
+
+
+.hero h1 span {
+
+    color:
+        var(--green);
+
+}
+
+
+.hero p {
+
+    max-width: 700px;
+
+    margin:
+        18px auto;
+
+    color:
+        var(--gray);
+
+    font-size:
+        18px;
+
+    line-height:
+        1.7;
+
+}
+
+
+/* =====================================================
+   GAME SELECTOR
+===================================================== */
+
+.game-menu {
+
+    max-width: 1100px;
+
+    margin:
+        20px auto 70px;
+
+    padding:
+        0 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap: 15px;
+
+}
+
+
+.game-select {
+
+    cursor: pointer;
+
+    padding:
+        18px 10px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(12,25,18,.95),
+            rgba(3,8,6,.95)
+        );
+
+    border:
+        1px solid
+        rgba(214,180,90,.25);
+
+    transition:
+        .3s ease;
+
+}
+
+
+.game-select:hover,
+.game-select.active {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        var(--gold);
+
+    box-shadow:
+
+        0 0 15px
+        rgba(214,180,90,.25),
+
+        0 0 30px
+        rgba(22,212,123,.12);
+
+}
+
+
+.game-select .icon {
+
+    display: block;
+
+    font-size: 30px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.game-select span {
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =====================================================
+   GAME AREA
+===================================================== */
+
+.game-wrapper {
+
+    width: min(
+        100% - 30px,
+        1000px
+    );
+
+    margin:
+        auto auto 80px;
+
+}
+
+
+.game {
+
+    display: none;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8,20,14,.97),
+            rgba(2,7,5,.98)
+        );
+
+    border:
+        1px solid
+        rgba(214,180,90,.35);
+
+    border-radius:
+        15px;
+
+    padding:
+        25px;
+
+    box-shadow:
+
+        0 25px 70px
+        rgba(0,0,0,.65),
+
+        inset 0 0 40px
+        rgba(22,212,123,.025);
+
+}
+
+
+.game.active {
+
+    display: block;
+
+    animation:
+        gameAppear .5s ease;
+
+}
+
+
+@keyframes gameAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(.98);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+.game-title {
+
+    text-align: center;
+
+    font-family:
+        'Cinzel',
+        serif;
+
+    color:
+        var(--gold2);
+
+    font-size:
+        clamp(25px,5vw,38px);
+
+    margin-bottom:
+        10px;
+
+}
+
+
+.game-description {
+
+    text-align: center;
+
+    color:
+        var(--gray);
+
+    margin-bottom:
+        25px;
+
+}
+
+
+/* =====================================================
+   GAME HUD
+===================================================== */
+
+.hud {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    gap: 10px;
+
+    margin-bottom:
+        20px;
+
+}
+
+
+.stat {
+
+    flex: 1;
+
+    padding:
+        12px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(214,180,90,.25);
+
+    background:
+        rgba(0,0,0,.35);
+
+}
+
+
+.stat small {
+
+    display: block;
+
+    color:
+        var(--gray);
+
+    font-size:
+        13px;
+
+}
+
+
+.stat strong {
+
+    display: block;
+
+    color:
+        var(--gold);
+
+    font-size:
+        22px;
+
+}
+
+
+/* =====================================================
+   ARENA
+===================================================== */
+
+.arena {
+
+    position: relative;
+
+    min-height: 360px;
+
+    border:
+        1px solid
+        rgba(22,212,123,.25);
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(11,100,65,.18),
+            transparent 45%
+        ),
+
+        #020604;
+
+    overflow: hidden;
+
+    display: flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+}
+
+
+.arena::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(214,180,90,.2);
+
+    animation:
+        arenaSpin 15s linear infinite;
+
+}
+
+
+@keyframes arenaSpin {
+
+    to {
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+
+/* =====================================================
+   PLAYER
+===================================================== */
+
+.player {
+
+    position: absolute;
+
+    bottom: 35px;
+
+    left: 18%;
+
+    font-size: 65px;
+
+    filter:
+        drop-shadow(
+            0 0 15px
+            rgba(22,212,123,.7)
+        );
+
+    animation:
+        playerFloat 2s ease-in-out infinite;
+
+}
+
+
+@keyframes playerFloat {
+
+    0%,100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-8px);
+
+    }
+
+}
+
+
+/* =====================================================
+   ENEMY
+===================================================== */
+
+.enemy {
+
+    position: absolute;
+
+    top: 40px;
+
+    right: 18%;
+
+    font-size: 65px;
+
+    filter:
+        drop-shadow(
+            0 0 15px
+            rgba(150,20,20,.7)
+        );
+
+    animation:
+        enemyFloat 2.5s ease-in-out infinite;
+
+}
+
+
+@keyframes enemyFloat {
+
+    0%,100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(8px);
+
+    }
+
+}
+
+
+/* =====================================================
+   HP BARS
+===================================================== */
+
+.health {
+
+    position: absolute;
+
+    width: 180px;
+
+    height: 14px;
+
+    background:
+        #111;
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+}
+
+
+.player-health {
+
+    left: 12%;
+
+    bottom: 110px;
+
+}
+
+
+.enemy-health {
+
+    right: 12%;
+
+    top: 110px;
+
+}
+
+
+.health-fill {
+
+    height: 100%;
+
+    width: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0a7048,
+            #16d47b
+        );
+
+    transition:
+        .3s ease;
+
+}
+
+
+.enemy-health
+.health-fill {
+
+    background:
+        linear-gradient(
+            90deg,
+            #721d1d,
+            #e04b4b
+        );
+
+}
+
+
+/* =====================================================
+   CONTROLS
+===================================================== */
+
+.controls {
+
+    display: flex;
+
+    justify-content:
+        center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top:
+        22px;
+
+}
+
+
+.magic-btn {
+
+    min-width: 130px;
+
+    min-height: 50px;
+
+    padding:
+        12px 18px;
+
+    border:
+        1px solid
+        var(--gold);
+
+    background:
+        rgba(5,15,10,.9);
+
+    color:
+        var(--gold2);
+
+    font-family:
+        'Rajdhani',
+        sans-serif;
+
+    font-size:
+        16px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        1px;
+
+    cursor:
+        pointer;
+
+    transition:
+        .25s ease;
+
+}
+
+
+.magic-btn:hover {
+
+    color:
+        #000;
+
+    background:
+        var(--gold);
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+
+        0 0 15px
+        var(--gold),
+
+        0 0 30px
+        rgba(22,212,123,.3);
+
+}
+
+
+.magic-btn:active {
+
+    transform:
+        scale(.94);
+
+}
+
+
+/* =====================================================
+   RESULT
+===================================================== */
+
+.result {
+
+    text-align:
+        center;
+
+    min-height:
+        30px;
+
+    margin-top:
+        15px;
+
+    color:
+        var(--green);
+
+    font-size:
+        18px;
+
+    font-weight:
+        700;
+
+}
+
+
+/* =====================================================
+   GENERIC MINI GAME
+===================================================== */
+
+.challenge {
+
+    min-height:
+        300px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    text-align:
+        center;
+
+}
+
+
+.big-symbol {
+
+    font-size:
+        85px;
+
+    margin:
+        20px;
+
+    filter:
+        drop-shadow(
+            0 0 20px
+            rgba(22,212,123,.7)
+        );
+
+    animation:
+        symbolPulse 1.5s infinite;
+
+}
+
+
+@keyframes symbolPulse {
+
+    50% {
+
+        transform:
+            scale(1.12);
+
+    }
+
+}
+
+
+/* =====================================================
+   MEMORY GAME
+===================================================== */
+
+.memory-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:
+        10px;
+
+    max-width:
+        500px;
+
+    margin:
+        25px auto;
+
+}
+
+
+.memory-card {
+
+    aspect-ratio:
+        1;
+
+    cursor:
+        pointer;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    font-size:
+        28px;
+
+    background:
+        #07130d;
+
+    border:
+        1px solid
+        rgba(214,180,90,.35);
+
+    transition:
+        .3s;
+
+}
+
+
+.memory-card:hover {
+
+    border-color:
+        var(--gold);
+
+}
+
+
+.memory-card.revealed {
+
+    background:
+        rgba(22,212,123,.12);
+
+}
+
+
+/* =====================================================
+   REACTION GAME
+===================================================== */
+
+.reaction-box {
+
+    width:
+        min(100%,500px);
+
+    height:
+        230px;
+
+    margin:
+        20px auto;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    border:
+        1px solid
+        rgba(214,180,90,.3);
+
+    background:
+        #030805;
+
+    cursor:
+        pointer;
+
+    font-size:
+        24px;
+
+    font-weight:
+        700;
+
+}
+
+
+/* =====================================================
+   NUMBER GAME
+===================================================== */
+
+.number-display {
+
+    font-family:
+        'Cinzel',
+        serif;
+
+    font-size:
+        65px;
+
+    text-align:
+        center;
+
+    color:
+        var(--gold2);
+
+    margin:
+        25px;
+
+    text-shadow:
+        0 0 20px
+        var(--gold);
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    text-align:
+        center;
+
+    padding:
+        40px 20px 70px;
+
+    color:
+        var(--gray);
+
+}
+
+
+footer strong {
+
+    color:
+        var(--gold);
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:800px) {
+
+    .game-menu {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    nav {
+
+        padding:
+            12px 5%;
+
+    }
+
+
+    .logo {
+
+        font-size:
+            16px;
+
+    }
+
+
+    .back {
+
+        font-size:
+            14px;
+
+        padding:
+            7px 11px;
+
+    }
+
+
+    .hero {
+
+        padding:
+            65px 18px 35px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            38px;
+
+    }
+
+
+    .hero p {
+
+        font-size:
+            16px;
+
+    }
+
+
+    .game-wrapper {
+
+        width:
+            calc(100% - 20px);
+
+    }
+
+
+    .game {
+
+        padding:
+            18px 14px;
+
+    }
+
+
+    .hud {
+
+        flex-wrap:
+            wrap;
+
+    }
+
+
+    .stat {
+
+        min-width:
+            30%;
+
+    }
+
+
+    .arena {
+
+        min-height:
+            330px;
+
+    }
+
+
+    .player {
+
+        left:
+            8%;
+
+        font-size:
+            52px;
+
+    }
+
+
+    .enemy {
+
+        right:
+            8%;
+
+        font-size:
+            52px;
+
+    }
+
+
+    .health {
+
+        width:
+            130px;
+
+    }
+
+
+    .player-health {
+
+        left:
+            5%;
+
+        bottom:
+            95px;
+
+    }
+
+
+    .enemy-health {
+
+        right:
+            5%;
+
+        top:
+            90px;
+
+    }
+
+
+    .magic-btn {
+
+        width:
+            100%;
+
+        min-height:
+            52px;
+
+    }
+
+
+    .memory-grid {
+
+        grid-template-columns:
+            repeat(4,1fr);
+
+    }
+
+
+    .game-select {
+
+        padding:
+            14px 7px;
+
+    }
+
+
+    .game-select .icon {
+
+        font-size:
+            25px;
+
+    }
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav>
+
+    <div class="logo">
+        ♣ CLARK'S KINGDOM
+    </div>
+
+    <a href="index.html"
+       class="back">
+        ← Portfolio
+    </a>
+
+</nav>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<header class="hero">
+
+    <div class="magic-ring"></div>
+
+    <div class="hero-content">
+
+        <h1>
+
+            MAGIC
+            <span>
+                ARENA
+            </span>
+
+        </h1>
+
+        <p>
+
+            Welcome to the Game Kingdom.
+
+            Choose your challenge,
+
+            awaken your magic,
+
+            and prove your power.
+
+        </p>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     GAME MENU
+===================================================== -->
+
+<div class="game-menu">
+
+
+    <div class="game-select active"
+         data-game="arena">
+
+        <span class="icon">
+            ⚔️
+        </span>
+
+        <span>
+            Magic Arena
+        </span>
+
+    </div>
+
+
+    <div class="game-select"
+         data-game="reaction">
+
+        <span class="icon">
+            ⚡
+        </span>
+
+        <span>
+            Reaction
+        </span>
+
+    </div>
+
+
+    <div class="game-select"
+         data-game="memory">
+
+        <span class="icon">
+            🧠
+        </span>
+
+        <span>
+            Memory
+        </span>
+
+    </div>
+
+
+    <div class="game-select"
+         data-game="number">
+
+        <span class="icon">
+            🔮
+        </span>
+
+        <span>
+            Number
+        </span>
+
+    </div>
+
+
+    <div class="game-select"
+         data-game="target">
+
+        <span class="icon">
+            🎯
+        </span>
+
+        <span>
+            Target
+        </span>
+
+    </div>
+
+
+    <div class="game-select"
+         data-game="coin">
+
+        <span class="icon">
+            🪙
+        </span>
+
+        <span>
+            Mana Coin
+        </span>
+
+    </div>
+
+
+    <div class="game-select"
+         data-game="dice">
+
+        <span class="icon">
+            🎲
+        </span>
+
+        <span>
+            Magic Dice
+        </span>
+
+    </div>
+
+
+    <div class="game-select"
+         data-game="spell">
+
+        <span class="icon">
+            ✨
+        </span>
+
+        <span>
+            Spell Cast
+        </span>
+
+    </div>
+
+
+    <div class="game-select"
+         data-game="quiz">
+
+        <span class="icon">
+            📜
+        </span>
+
+        <span>
+            Magic Quiz
+        </span>
+
+    </div>
+
+
+    <div class="game-select"
+         data-game="luck">
+
+        <span class="icon">
+            ♣
+        </span>
+
+        <span>
+            Grimoire Luck
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     GAMES
+===================================================== -->
+
+<div class="game-wrapper">
+
+
+
+<!-- =====================================================
+     GAME 1
+===================================================== -->
+
+<div class="game active"
+     id="arena">
+
+    <h2 class="game-title">
+        ⚔️ Magic Arena
+    </h2>
+
+    <p class="game-description">
+        Defeat the enemy before your HP reaches zero.
+    </p>
+
+
+    <div class="hud">
+
+        <div class="stat">
+
+            <small>
+                HP
+            </small>
+
+            <strong id="playerHP">
+                100
+            </strong>
+
+        </div>
+
+
+        <div class="stat">
+
+            <small>
+                Level
+            </small>
+
+            <strong id="level">
+                1
+            </strong>
+
+        </div>
+
+
+        <div class="stat">
+
+            <small>
+                Score
+            </small>
+
+            <strong id="score">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="arena">
+
+        <div class="health player-health">
+
+            <div class="health-fill"
+                 id="playerBar">
+            </div>
+
+        </div>
+
+
+        <div class="health enemy-health">
+
+            <div class="health-fill"
+                 id="enemyBar">
+            </div>
+
+        </div>
+
+
+        <div class="player">
+            🧙
+        </div>
+
+
+        <div class="enemy">
+            👹
+        </div>
+
+    </div>
+
+
+    <div class="controls">
+
+        <button class="magic-btn"
+                onclick="attack(15)">
+
+            ⚔️ ATTACK
+
+        </button>
+
+
+        <button class="magic-btn"
+                onclick="attack(25)">
+
+            🌿 MAGIC
+
+        </button>
+
+
+        <button class="magic-btn"
+                onclick="healPlayer()">
+
+            💚 HEAL
+
+        </button>
+
+
+        <button class="magic-btn"
+                onclick="resetArena()">
+
+            ↻ RESET
+
+        </button>
+
+    </div>
+
+
+    <div class="result"
+         id="arenaResult">
+
+        Choose your spell.
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     GAME 2 REACTION
+===================================================== -->
+
+<div class="game"
+     id="reaction">
+
+    <h2 class="game-title">
+        ⚡ Mana Reaction
+    </h2>
+
+    <p class="game-description">
+        Wait for the magic circle to turn green.
+        Then tap as fast as possible!
+    </p>
+
+
+    <div class="challenge">
+
+        <div class="reaction-box"
+             id="reactionBox"
+             onclick="reactionClick()">
+
+            TAP TO START
+
+        </div>
+
+
+        <div class="result"
+             id="reactionResult">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     GAME 3 MEMORY
+===================================================== -->
+
+<div class="game"
+     id="memory">
+
+    <h2 class="game-title">
+        🧠 Grimoire Memory
+    </h2>
+
+    <p class="game-description">
+        Find all matching magic symbols.
+    </p>
+
+
+    <div class="memory-grid"
+         id="memoryGrid">
+
+    </div>
+
+
+    <div class="controls">
+
+        <button class="magic-btn"
+                onclick="startMemory()">
+
+            ↻ NEW GAME
+
+        </button>
+
+    </div>
+
+
+    <div class="result"
+         id="memoryResult">
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     GAME 4 NUMBER
+===================================================== -->
+
+<div class="game"
+     id="number">
+
+    <h2 class="game-title">
+        🔮 Magic Number
+    </h2>
+
+    <p class="game-description">
+        Guess the hidden number from 1 to 20.
+    </p>
+
+
+    <div class="number-display"
+         id="numberDisplay">
+
+        ?
+
+    </div>
+
+
+    <div class="controls">
+
+        <button class="magic-btn"
+                onclick="guessNumber(1)">
+            1
+        </button>
+
+        <button class="magic-btn"
+                onclick="guessNumber(5)">
+            5
+        </button>
+
+        <button class="magic-btn"
+                onclick="guessNumber(10)">
+            10
+        </button>
+
+        <button class="magic-btn"
+                onclick="guessNumber(15)">
+            15
+        </button>
+
+        <button class="magic-btn"
+                onclick="guessNumber(20)">
+            20
+        </button>
+
+    </div>
+
+
+    <div class="result"
+         id="numberResult">
+
+        Choose a number.
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     GAME 5 TARGET
+===================================================== -->
+
+<div class="game"
+     id="target">
+
+    <h2 class="game-title">
+        🎯 Magic Target
+    </h2>
+
+    <p class="game-description">
+        Hit the moving target as many times as possible.
+    </p>
+
+
+    <div class="reaction-box"
+         id="targetBox"
+         onclick="hitTarget()">
+
+        🎯
+
+    </div>
+
+
+    <div class="result"
+         id="targetResult">
+
+        Hits: 0
+
+    </div>
+
+
+    <div class="controls">
+
+        <button class="magic-btn"
+                onclick="startTarget()">
+
+            START
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     GAME 6 COIN
+===================================================== -->
+
+<div class="game"
+     id="coin">
+
+    <h2 class="game-title">
+        🪙 Mana Coin
+    </h2>
+
+    <p class="game-description">
+        Choose heads or tails.
+    </p>
+
+
+    <div class="big-symbol"
+         id="coinDisplay">
+
+        🪙
+
+    </div>
+
+
+    <div class="controls">
+
+        <button class="magic-btn"
+                onclick="coinFlip('HEADS')">
+
+            HEADS
+
+        </button>
+
+
+        <button class="magic-btn"
+                onclick="coinFlip('TAILS')">
+
+            TAILS
+
+        </button>
+
+    </div>
+
+
+    <div class="result"
+         id="coinResult">
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     GAME 7 DICE
+===================================================== -->
+
+<div class="game"
+     id="dice">
+
+    <h2 class="game-title">
+        🎲 Magic Dice
+    </h2>
+
+    <p class="game-description">
+        Roll the magical dice.
+    </p>
+
+
+    <div class="big-symbol"
+         id="diceDisplay">
+
+        🎲
+
+    </div>
+
+
+    <div class="controls">
+
+        <button class="magic-btn"
+                onclick="rollDice()">
+
+            ROLL DICE
+
+        </button>
+
+    </div>
+
+
+    <div class="result"
+         id="diceResult">
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     GAME 8 SPELL
+===================================================== -->
+
+<div class="game"
+     id="spell">
+
+    <h2 class="game-title">
+        ✨ Spell Cast
+    </h2>
+
+    <p class="game-description">
+        Choose a spell and unleash your magic.
+    </p>
+
+
+    <div class="big-symbol"
+         id="spellDisplay">
+
+        ✨
+
+    </div>
+
+
+    <div class="controls">
+
+        <button class="magic-btn"
+                onclick="castSpell('Wind')">
+
+            🌪 WIND
+
+        </button>
+
+
+        <button class="magic-btn"
+                onclick="castSpell('Fire')">
+
+            🔥 FIRE
+
+        </button>
+
+
+        <button class="magic-btn"
+                onclick="castSpell('Dark')">
+
+            🌑 DARK
+
+        </button>
+
+
+        <button class="magic-btn"
+                onclick="castSpell('Nature')">
+
+            🌿 NATURE
+
+        </button>
+
+    </div>
+
+
+    <div class="result"
+         id="spellResult">
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     GAME 9 QUIZ
+===================================================== -->
+
+<div class="game"
+     id="quiz">
+
+    <h2 class="game-title">
+        📜 Magic Quiz
+    </h2>
+
+    <p class="game-description"
+       id="quizQuestion">
+
+        Which language is mainly used to style
+        a webpage?
+
+    </p>
+
+
+    <div class="controls">
+
+        <button class="magic-btn"
+                onclick="answerQuiz('HTML')">
+
+            HTML
+
+        </button>
+
+
+        <button class="magic-btn"
+                onclick="answerQuiz('CSS')">
+
+            CSS
+
+        </button>
+
+
+        <button class="magic-btn"
+                onclick="answerQuiz('Python')">
+
+            PYTHON
+
+        </button>
+
+    </div>
+
+
+    <div class="result"
+         id="quizResult">
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     GAME 10 LUCK
+===================================================== -->
+
+<div class="game"
+     id="luck">
+
+    <h2 class="game-title">
+        ♣ Grimoire Luck
+    </h2>
+
+    <p class="game-description">
+        Tap the grimoire and discover your magic.
+    </p>
+
+
+    <div class="big-symbol"
+         id="luckSymbol"
+         onclick="openLuck()">
+
+        📖
+
+    </div>
+
+
+    <div class="result"
+         id="luckResult">
+
+        Tap the grimoire.
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <p>
+
+        ♣ <strong>Clark's Magic Kingdom</strong>
+
+        <br>
+
+        A small collection of magical games.
+
+    </p>
+
+</footer>
+
+
+
+<script>
+
+/* =====================================================
+   GAME SELECTOR
+===================================================== */
+
+const gameButtons =
+    document.querySelectorAll(
+        ".game-select"
+    );
+
+
+const games =
+    document.querySelectorAll(
+        ".game"
+    );
+
+
+gameButtons.forEach(
+    button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const target =
+                    button.dataset.game;
+
+
+                gameButtons.forEach(
+                    b =>
+                    b.classList.remove(
+                        "active"
+                    )
+                );
+
+
+                games.forEach(
+                    game =>
+                    game.classList.remove(
+                        "active"
+                    )
+                );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                const selected =
+                    document.getElementById(
+                        target
+                    );
+
+
+                if (selected) {
+
+                    selected.classList.add(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   MAGIC PARTICLES
+===================================================== */
+
+function magicParticles(
+    x,
+    y,
+    amount = 12
+) {
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+        const p =
+            document.createElement(
+                "div"
+            );
+
+
+        p.style.position =
+            "fixed";
+
+        p.style.left =
+            x + "px";
+
+        p.style.top =
+            y + "px";
+
+        p.style.width =
+            "6px";
+
+        p.style.height =
+            "6px";
+
+        p.style.borderRadius =
+            "50%";
+
+        p.style.background =
+            "#d6b45a";
+
+        p.style.boxShadow =
+            "0 0 12px #16d47b";
+
+        p.style.pointerEvents =
+            "none";
+
+        p.style.zIndex =
+            "9999";
+
+
+        const dx =
+            Math.random() * 180 - 90;
+
+
+        const dy =
+            Math.random() * 180 - 90;
+
+
+        p.animate(
+
+            [
+                {
+                    transform:
+                        "translate(0,0) scale(1)",
+
+                    opacity: 1
+                },
+
+                {
+                    transform:
+                        `translate(${dx}px,${dy}px) scale(0)`,
+
+                    opacity: 0
+                }
+            ],
+
+            {
+                duration:
+                    800,
+
+                easing:
+                    "ease-out"
+            }
+
+        );
+
+
+        document.body.appendChild(
+            p
+        );
+
+
+        setTimeout(
+            () => p.remove(),
+            800
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   ARENA
+===================================================== */
+
+let playerHP = 100;
+let enemyHP = 100;
+let score = 0;
+let level = 1;
+
+
+function attack(damage) {
+
+    if (
+        playerHP <= 0 ||
+        enemyHP <= 0
+    ) return;
+
+
+    enemyHP -= damage;
+
+
+    if (enemyHP < 0)
+        enemyHP = 0;
+
+
+    updateArena();
+
+
+    const result =
+        document.getElementById(
+            "arenaResult"
+        );
+
+
+    result.textContent =
+        `Magic attack dealt ${damage} damage!`;
+
+
+    magicParticles(
+        window.innerWidth / 2,
+        window.innerHeight / 2,
+        15
+    );
+
+
+    if (enemyHP <= 0) {
+
+        score += 100;
+
+        level++;
+
+        enemyHP = 100 + level * 10;
+
+        playerHP = Math.min(
+            100,
+            playerHP + 20
+        );
+
+
+        result.textContent =
+            "✦ ENEMY DEFEATED! NEW LEVEL! ✦";
+
+
+        updateArena();
+
+        return;
+
+    }
+
+
+    setTimeout(
+        enemyAttack,
+        500
+    );
+
+}
+
+
+function enemyAttack() {
+
+    const damage =
+        Math.floor(
+            Math.random() * 12
+        ) + 5;
+
+
+    playerHP -= damage;
+
+
+    if (playerHP < 0)
+        playerHP = 0;
+
+
+    updateArena();
+
+
+    document.getElementById(
+        "arenaResult"
+    ).textContent =
+        `The enemy attacked for ${damage} damage!`;
+
+
+    if (playerHP <= 0) {
+
+        document.getElementById(
+            "arenaResult"
+        ).textContent =
+            "☠️ YOU HAVE FALLEN. PRESS RESET.";
+
+    }
+
+}
+
+
+function healPlayer() {
+
+    if (playerHP <= 0)
+        return;
+
+
+    playerHP += 20;
+
+
+    if (playerHP > 100)
+        playerHP = 100;
+
+
+    updateArena();
+
+
+    document.getElementById(
+        "arenaResult"
+    ).textContent =
+        "💚 Healing magic restored your HP.";
+
+}
+
+
+function updateArena() {
+
+    document.getElementById(
+        "playerHP"
+    ).textContent =
+        playerHP;
+
+
+    document.getElementById(
+        "level"
+    ).textContent =
+        level;
+
+
+    document.getElementById(
+        "score"
+    ).textContent =
+        score;
+
+
+    document.getElementById(
+        "playerBar"
+    ).style.width =
+        playerHP + "%";
+
+
+    document.getElementById(
+        "enemyBar"
+    ).style.width =
+        Math.max(
+            0,
+            enemyHP
+        ) + "%";
+
+}
+
+
+function resetArena() {
+
+    playerHP = 100;
+
+    enemyHP = 100;
+
+    score = 0;
+
+    level = 1;
+
+    updateArena();
+
+
+    document.getElementById(
+        "arenaResult"
+    ).textContent =
+        "Choose your spell.";
+
+}
+
+
+/* =====================================================
+   REACTION GAME
+===================================================== */
+
+let reactionReady = false;
+
+let reactionStart = 0;
+
+let reactionTimer;
+
+
+function reactionClick() {
+
+    const box =
+        document.getElementById(
+            "reactionBox"
+        );
+
+
+    const result =
+        document.getElementById(
+            "reactionResult"
+        );
+
+
+    if (!reactionReady) {
+
+        clearTimeout(
+            reactionTimer
+        );
+
+
+        reactionReady = false;
+
+
+        box.textContent =
+            "WAIT...";
+
+
+        result.textContent =
+            "Wait for the magic!";
+
+
+        reactionTimer =
+            setTimeout(
+                () => {
+
+                    reactionReady =
+                        true;
+
+                    reactionStart =
+                        Date.now();
+
+                    box.textContent =
+                        "⚡ CAST NOW!";
+
+                    box.style.color =
+                        "#16d47b";
+
+                },
+
+                Math.random() *
+                2500 + 1000
+
+            );
+
+
+        return;
+
+    }
+
+
+    const time =
+        Date.now() -
+        reactionStart;
+
+
+    reactionReady =
+        false;
+
+
+    box.textContent =
+        "TAP TO START";
+
+
+    box.style.color =
+        "";
+
+
+    result.textContent =
+        `⚡ Reaction time: ${time} ms`;
+
+}
+
+
+/* =====================================================
+   MEMORY GAME
+===================================================== */
+
+let memoryValues = [];
+
+let memoryOpen = [];
+
+let memoryMatched = 0;
+
+
+function startMemory() {
+
+    const symbols = [
+        "♣",
+        "⚡",
+        "🌿",
+        "🔥",
+        "🌙",
+        "⭐",
+        "♣",
+        "⚡",
+        "🌿",
+        "🔥",
+        "🌙",
+        "⭐"
+    ];
+
+
+    memoryValues =
+        symbols.sort(
+            () => Math.random() - .5
+        );
+
+
+    memoryOpen = [];
+
+    memoryMatched = 0;
+
+
+    const grid =
+        document.getElementById(
+            "memoryGrid"
+        );
+
+
+    grid.innerHTML = "";
+
+
+    memoryValues.forEach(
+        (symbol, index) => {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "memory-card";
+
+
+            card.textContent =
+                "?";
+
+
+            card.dataset.index =
+                index;
+
+
+            card.onclick =
+                () =>
+                flipMemory(card);
+
+
+            grid.appendChild(
+                card
+            );
+
+        }
+    );
+
+
+    document.getElementById(
+        "memoryResult"
+    ).textContent =
+        "Find the matching symbols.";
+
+}
+
+
+function flipMemory(card) {
+
+    if (
+        memoryOpen.length >= 2 ||
+        card.classList.contains(
+            "revealed"
+        )
+    ) return;
+
+
+    const index =
+        Number(
+            card.dataset.index
+        );
+
+
+    card.textContent =
+        memoryValues[index];
+
+
+    card.classList.add(
+        "revealed"
+    );
+
+
+    memoryOpen.push(card);
+
+
+    if (
+        memoryOpen.length === 2
+    ) {
+
+        const first =
+            memoryOpen[0];
+
+        const second =
+            memoryOpen[1];
+
+
+        const firstIndex =
+            Number(
+                first.dataset.index
+            );
+
+
+        const secondIndex =
+            Number(
+                second.dataset.index
+            );
+
+
+        if (
+            memoryValues[firstIndex] ===
+            memoryValues[secondIndex]
+        ) {
+
+            memoryMatched++;
+
+            memoryOpen = [];
+
+
+            if (
+                memoryMatched === 6
+            ) {
+
+                document.getElementById(
+                    "memoryResult"
+                ).textContent =
+                    "♣ GRIMOIRE MASTER!";
+
+            }
+
+        } else {
+
+            setTimeout(
+                () => {
+
+                    first.textContent =
+                        "?";
+
+                    second.textContent =
+                        "?";
+
+
+                    first.classList.remove(
+                        "revealed"
+                    );
+
+                    second.classList.remove(
+                        "revealed"
+                    );
+
+
+                    memoryOpen = [];
+
+                },
+
+                700
+            );
+
+        }
+
+    }
+
+}
+
+
+startMemory();
+
+
+/* =====================================================
+   NUMBER GAME
+===================================================== */
+
+let secretNumber =
+    Math.floor(
+        Math.random() * 20
+    ) + 1;
+
+
+function guessNumber(number) {
+
+    const result =
+        document.getElementById(
+            "numberResult"
+        );
+
+
+    if (
+        number ===
+        secretNumber
+    ) {
+
+        result.textContent =
+            "✦ CORRECT! YOUR MAGIC IS STRONG! ✦";
+
+
+        secretNumber =
+            Math.floor(
+                Math.random() * 20
+            ) + 1;
+
+
+    } else if (
+        number < secretNumber
+    ) {
+
+        result.textContent =
+            "The magic number is higher.";
+
+
+    } else {
+
+        result.textContent =
+            "The magic number is lower.";
+
+    }
+
+}
+
+
+/* =====================================================
+   TARGET GAME
+===================================================== */
+
+let targetHits = 0;
+
+let targetActive = false;
+
+
+function startTarget() {
+
+    const box =
+        document.getElementById(
+            "targetBox"
+        );
+
+
+    targetHits = 0;
+
+    targetActive = true;
+
+
+    box.textContent =
+        "🎯";
+
+
+    moveTarget();
+
+
+    document.getElementById(
+        "targetResult"
+    ).textContent =
+        "Hits: 0";
+
+}
+
+
+function moveTarget() {
+
+    if (!targetActive)
+        return;
+
+
+    const box =
+        document.getElementById(
+            "targetBox"
+        );
+
+
+    const x =
+        Math.random() * 70;
+
+
+    const y =
+        Math.random() * 60;
+
+
+    box.style.justifyContent =
+        "flex-start";
+
+
+    box.style.alignItems =
+        "flex-start";
+
+
+    box.style.paddingLeft =
+        x + "%";
+
+
+    box.style.paddingTop =
+        y + "%";
+
+
+    setTimeout(
+        moveTarget,
+        900
+    );
+
+}
+
+
+function hitTarget() {
+
+    if (!targetActive)
+        return;
+
+
+    targetHits++;
+
+
+    document.getElementById(
+        "targetResult"
+    ).textContent =
+        `Hits: ${targetHits}`;
+
+
+    magicParticles(
+        window.innerWidth / 2,
+        window.innerHeight / 2,
+        5
+    );
+
+}
+
+
+/* =====================================================
+   COIN FLIP
+===================================================== */
+
+function coinFlip(choice) {
+
+    const result =
+        document.getElementById(
+            "coinResult"
+        );
+
+
+    const coin =
+        Math.random() < .5
+            ? "HEADS"
+            : "TAILS";
+
+
+    document.getElementById(
+        "coinDisplay"
+    ).textContent =
+        "🪙";
+
+
+    setTimeout(
+        () => {
+
+            if (
+                choice === coin
+            ) {
+
+                result.textContent =
+                    `✦ YOU WIN! It was ${coin}!`;
+
+            } else {
+
+                result.textContent =
+                    `You lost. It was ${coin}.`;
+
+            }
+
+        },
+
+        500
+    );
+
+}
+
+
+/* =====================================================
+   DICE
+===================================================== */
+
+function rollDice() {
+
+    const number =
+        Math.floor(
+            Math.random() * 6
+        ) + 1;
+
+
+    const faces = [
+        "⚀",
+        "⚁",
+        "⚂",
+        "⚃",
+        "⚄",
+        "⚅"
+    ];
+
+
+    document.getElementById(
+        "diceDisplay"
+    ).textContent =
+        faces[number - 1];
+
+
+    document.getElementById(
+        "diceResult"
+    ).textContent =
+        `The magic dice rolled ${number}!`;
+
+
+    magicParticles(
+        window.innerWidth / 2,
+        window.innerHeight / 2,
+        10
+    );
+
+}
+
+
+/* =====================================================
+   SPELL GAME
+===================================================== */
+
+function castSpell(spell) {
+
+    const spells = {
+
+        Wind: "🌪",
+
+        Fire: "🔥",
+
+        Dark: "🌑",
+
+        Nature: "🌿"
+
+    };
+
+
+    document.getElementById(
+        "spellDisplay"
+    ).textContent =
+        spells[spell];
+
+
+    document.getElementById(
+        "spellResult"
+    ).textContent =
+        `✦ ${spell} Magic Activated!`;
+
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+function answerQuiz(answer) {
+
+    const result =
+        document.getElementById(
+            "quizResult"
+        );
+
+
+    if (
+        answer === "CSS"
+    ) {
+
+        result.textContent =
+            "✦ CORRECT! CSS styles webpages.";
+
+    } else {
+
+        result.textContent =
+            "Not quite. Try again!";
+
+    }
+
+}
+
+
+/* =====================================================
+   GRIMOIRE LUCK
+===================================================== */
+
+function openLuck() {
+
+    const results = [
+
+        "♣ Five-Leaf Magic! Rare power!",
+
+        "⚡ Lightning Magic! Fast and strong!",
+
+        "🌿 Nature Magic! Calm but powerful!",
+
+        "🔥 Fire Magic! Destructive power!",
+
+        "🌙 Dark Magic! Mysterious power!",
+
+        "⭐ Light Magic! A bright future!"
+
+    ];
+
+
+    const result =
+        results[
+            Math.floor(
+                Math.random() *
+                results.length
+            )
+        ];
+
+
+    document.getElementById(
+        "luckResult"
+    ).textContent =
+        result;
+
+
+    document.getElementById(
+        "luckSymbol"
+    ).textContent =
+        "♣";
+
+
+    magicParticles(
+        window.innerWidth / 2,
+        window.innerHeight / 2,
+        20
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>
